@@ -18,8 +18,8 @@ def push_to_hf(args):
     )
 
     # show example
-    state_dict = torch.load("pretrained_models/fractalar_in64/checkpoint-last.pth")
-    model.load_state_dict(state_dict)
+    state_dict = torch.load("pretrained_models/fractalar_in64/checkpoint-last.pth", map_location="cpu")
+    model.load_state_dict(state_dict["model"])
     model.push_to_hub("nielsr/fractalgen-in64")
 
     # reload
