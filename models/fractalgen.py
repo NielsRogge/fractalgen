@@ -3,12 +3,14 @@ from functools import partial
 import torch
 import torch.nn as nn
 
+from huggingface_hub import PyTorchModelHubMixin
+
 from models.ar import AR
 from models.mar import MAR
 from models.pixelloss import PixelLoss
 
 
-class FractalGen(nn.Module):
+class FractalGen(nn.Module, PyTorchModelHubMixin, repo_url="https://github.com/LTH14/fractalgen", pipeline_tag="text-to-image", license="mit"):
     """ Fractal Generative Model"""
 
     def __init__(self,
